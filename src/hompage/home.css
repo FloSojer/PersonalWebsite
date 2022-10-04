@@ -29,17 +29,24 @@
      transform: rotate(90deg) translateY(-100vh); 
     transform-origin: top left;
   }
-  
-  .home {
-    background-color: red;
+
+  .home{
+
+    background-image: url('../img/background_01.gif');
+    background-size: 100% auto;
+    background-position: 100% 65%;
   }
   
   .programming{
-    background-color: blue;
+    background-image: url('../img/background_02.gif');
+    background-size: 100% auto;
+    background-position: 100% 65%;
   }
   
   .photography{
-    background-color: bisque;
+    background-image: url('../img/background_03.gif');
+    background-size: 100% auto;
+    background-position: 100% 65%;
   }
   
   ::-webkit-scrollbar{

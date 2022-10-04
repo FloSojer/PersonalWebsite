@@ -2,6 +2,7 @@ import userEvent from '@testing-library/user-event';
 import { AnyMxRecord } from 'dns';
 import React, { useState, useEffect, useRef } from 'react';
 import './home.css';
+import homepic from '../img/background_01.gif';
 
 const Home: React.FC = () => {
 
@@ -34,6 +35,10 @@ const Home: React.FC = () => {
     const box : any = document.querySelector('.home');
     const rect = box.getBoundingClientRect();
 
+    const home : any = document.querySelector('.home');
+    const progr : any = document.querySelector('.programming');
+    const photo : any = document.querySelector('.photography');
+
     console.log(rect.right);
     console.log(window.innerWidth);
 
@@ -41,12 +46,15 @@ const Home: React.FC = () => {
     const windowWith = window.innerWidth;
 
     const percentageHome = windowWith-positionX; 
-    if(windowWith- positionX < windowWith * 0.45 ){
-        console.log('Bin auf Homepage')
-    }else if(windowWith- positionX > windowWith * 0.45 && positionX + windowWith > windowWith * 0.55 ){
-        console.log('Bin bei Programming')
-    }else if(positionX + windowWith < windowWith * 0.55 ){
-        console.log('Bin bei Foto')
+    if(windowWith- positionX < windowWith * 0.05 ){
+        console.log('Bin auf Homepage');
+        home.scrollIntoView();
+    }else if(windowWith- positionX > windowWith * 0.95 && positionX + windowWith > windowWith * 0.95 ){
+        console.log('Bin bei Programming');
+        progr.scrollIntoView();
+    }else if(positionX + windowWith < windowWith * 0.05 ){
+        console.log('Bin bei Foto');
+        photo.scrollIntoView();
     }
   }
 
@@ -60,16 +68,16 @@ const Home: React.FC = () => {
         <>
             <div className='outerhomepage' id='outerhomepage'>
                 <div className='homepage' id='homepage'>
-                    <div className='page home'>
+                    <div className='page home' id='home' >
+                        
                         hallo
-
                         <button onClick={scroll}> Moinsen </button>
                     </div>
-                    <div className=' page programming'>
+                    <div className=' page programming' id='prog'>
                         Prog
                         <button onClick={scroll}> Moinsen </button>
                     </div>
-                    <div className='page photography'>
+                    <div className='page photography' id='photo'>
                         Foto
                         <button onClick={scroll}> Moinsen </button>
                     </div>

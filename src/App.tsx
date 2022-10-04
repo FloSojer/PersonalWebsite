@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import logo from './logo.svg';
-import './App.css';
 import { getPositionOfLineAndCharacter } from 'typescript';
 import Home from '../src/hompage/Homepage'
 
