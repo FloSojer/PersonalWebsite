@@ -8,6 +8,10 @@ const Home: React.FC = () => {
 
     console.log(window.location.href);
 
+    const [selHome, setSelHome] = useState(Boolean);
+    const [selProg, setSelProg] = useState(Boolean);
+    const [selPhoto, setSelPhoto] = useState(Boolean);
+
     function scroll() {
         console.log('scrolli');
         const box: any = document.querySelector('.home');
@@ -27,13 +31,37 @@ const Home: React.FC = () => {
         if (windowWith - positionX < windowWith * 0.05) {
             console.log('Bin auf Homepage');
             home.scrollIntoView();
+            setSelHome(true);
+            setSelProg(false);
+            setSelPhoto(false);
         } else if (windowWith - positionX > windowWith * 0.95 && positionX + windowWith > windowWith * 0.95) {
             console.log('Bin bei Programming');
             progr.scrollIntoView();
+            setSelHome(false);
+            setSelProg(true);
+            setSelPhoto(false);
         } else if (positionX + windowWith < windowWith * 0.05) {
             console.log('Bin bei Foto');
             photo.scrollIntoView();
+            setSelHome(false);
+            setSelProg(false);
+            setSelPhoto(true);
         }
+    }
+
+    function switchViewToHome(){
+        const home: any = document.querySelector('.home');
+        home.scrollIntoView({behavior: "smooth"});
+
+    }
+    function switchViewToPhoto(){
+        const photo: any = document.querySelector('.photography');
+        photo.scrollIntoView({behavior: "smooth"});
+    }
+    function switchViewToProg(){
+        const progr: any = document.querySelector('.programming');
+        progr.scrollIntoView({behavior: "smooth"});
+
     }
 
     useEffect(() => {
@@ -62,10 +90,10 @@ const Home: React.FC = () => {
                 </div>
             </div>
             <ul className='topBar'>
-                <li className='lu'> Moinsen </li>
-                <li><a>Home</a></li>
-                <li><a>News</a></li>
-                <li><a> Dings</a></li>
+                <li className='lu'> Florian Sojer </li>
+                <li id='nbPhoto'><a onClick={switchViewToPhoto}> Photography </a></li>
+                <li id='nbProg'><a onClick={switchViewToProg}> Programming </a></li>
+                <li id='nbHome'><a onClick={switchViewToHome}> Home </a></li>
             </ul>
 
         </>
