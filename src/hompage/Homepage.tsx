@@ -13,58 +13,49 @@ const Home: React.FC = () => {
     const [selPhoto, setSelPhoto] = useState(Boolean);
 
     function scroll() {
-        console.log('scrolli');
         const box: any = document.querySelector('.home');
         const rect = box.getBoundingClientRect();
-
-        const home: any = document.querySelector('.home');
-        const progr: any = document.querySelector('.programming');
-        const photo: any = document.querySelector('.photography');
-
-        console.log(rect.right);
-        console.log(window.innerWidth);
 
         const positionX = rect.right;
         const windowWith = window.innerWidth;
 
         const percentageHome = windowWith - positionX;
         if (windowWith - positionX < windowWith * 0.05) {
-            console.log('Bin auf Homepage');
-            home.scrollIntoView();
-            setSelHome(true);
-            setSelProg(false);
-            setSelPhoto(false);
+            switchViewToHome();
+
         } else if (windowWith - positionX > windowWith * 0.95 && positionX + windowWith > windowWith * 0.95) {
-            console.log('Bin bei Programming');
-            progr.scrollIntoView();
-            setSelHome(false);
-            setSelProg(true);
-            setSelPhoto(false);
+            switchViewToProg();
+
         } else if (positionX + windowWith < windowWith * 0.05) {
-            console.log('Bin bei Foto');
-            photo.scrollIntoView();
-            setSelHome(false);
-            setSelProg(false);
-            setSelPhoto(true);
+            switchViewToPhoto();
         }
     }
 
     function switchViewToHome(){
         const home: any = document.querySelector('.home');
         home.scrollIntoView({behavior: "smooth"});
-
+        setSelHome(true);
+        setSelProg(false);
+        setSelPhoto(false);
     }
     function switchViewToPhoto(){
         const photo: any = document.querySelector('.photography');
         photo.scrollIntoView({behavior: "smooth"});
+        setSelHome(false);
+        setSelProg(false);
+        setSelPhoto(true);
     }
     function switchViewToProg(){
         const progr: any = document.querySelector('.programming');
         progr.scrollIntoView({behavior: "smooth"});
+        setSelHome(false);
+        setSelProg(true);
+        setSelPhoto(false);
 
     }
 
     useEffect(() => {
+        scroll();
         document.addEventListener('wheel', scroll);
     }, []);
 
@@ -75,17 +66,19 @@ const Home: React.FC = () => {
             <div className='outerhomepage' id='outerhomepage'>
                 <div className='homepage' id='homepage'>
                     <div className='page home' id='home' >
-
-                        hallo
-                        <button onClick={scroll}> Moinsen </button>
+                        <h1>
+                            Hallo du nudel
+                        </h1>
                     </div>
                     <div className=' page programming' id='prog'>
-                        Prog
-                        <button onClick={scroll}> Moinsen </button>
+                        <h1>
+                            Comming Soon....
+                        </h1>
                     </div>
                     <div className='page photography' id='photo'>
-                        Foto
-                        <button onClick={scroll}> Moinsen </button>
+                        <h1>
+                            Photo Comming soon...
+                        </h1>
                     </div>
                 </div>
             </div>

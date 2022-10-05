@@ -98,3 +98,11 @@ ul {
   ::-webkit-scrollbar{
     display: none;
   }
+
+  h1 {
+    font-family: Helvetica;
+    font-size: 26px;
+    padding-top: 20px;
+    padding-left: 10px;
+    color: rgba(239, 222, 219, 0.854)
+  }
